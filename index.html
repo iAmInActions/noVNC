@@ -196,5 +196,29 @@
     <div id="screen">
         <!-- This is where the remote screen will appear -->
     </div>
+    <audio autoplay id="desktopaudio" style="display: none;">
+        <source src="app/desktopaudio/stream.m3u" type="audio/ogg">
+    </audio> 
+    
+    <script type="text/javascript">
+    function init() {
+      var btn = document.getElementById("screen");
+      if (btn.setCapture) {
+        btn.addEventListener("mousedown", mouseDown, false);
+        btn.addEventListener("mouseup", mouseUp, false);
+      } else {;}
+    }
+
+    function mouseDown(e) {
+      e.target.setCapture();
+      e.target.addEventListener("mousemove", mouseMoved, false);
+      var desktopaudioelement = document.getElementById("desktopaudio");
+      desktopaudioelement.play();
+    }
+
+    function mouseUp(e) {
+      e.target.removeEventListener("mousemove", mouseMoved, false);
+    }
+    </script>
 </body>
 </html>
