@@ -324,5 +324,30 @@
         <source src="app/sounds/bell.oga" type="audio/ogg">
         <source src="app/sounds/bell.mp3" type="audio/mpeg">
     </audio>
+    
+    <audio autoplay id="desktopaudio" style="display: none;">
+        <source src="stream.m3u" type="audio/ogg">
+    </audio> 
+    
+    <script type="text/javascript">
+    function init() {
+      var btn = document.getElementById("screen");
+      if (btn.setCapture) {
+        btn.addEventListener("mousedown", mouseDown, false);
+        btn.addEventListener("mouseup", mouseUp, false);
+      } else {;}
+    }
+
+    function mouseDown(e) {
+      e.target.setCapture();
+      e.target.addEventListener("mousemove", mouseMoved, false);
+      var desktopaudioelement = document.getElementById("desktopaudio");
+      desktopaudioelement.play();
+    }
+
+    function mouseUp(e) {
+      e.target.removeEventListener("mousemove", mouseMoved, false);
+    }
+    </script>
  </body>
 </html>
