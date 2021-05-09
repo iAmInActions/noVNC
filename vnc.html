@@ -311,7 +311,7 @@
     </div>
 
     <!-- This is where the RFB elements will attach -->
-    <div id="noVNC_container">
+    <div id="noVNC_container" onclick="mouseOverScreen">
         <!-- Note that Google Chrome on Android doesn't respect any of these,
              html attributes which attempt to disable text suggestions on the
              on-screen keyboard. Let's hope Chrome implements the ime-mode
@@ -330,24 +330,12 @@
     </audio> 
     
     <script type="text/javascript">
-    function init() {
-      var btn = document.getElementById("screen");
-      if (btn.setCapture) {
-        btn.addEventListener("mousedown", mouseDown, false);
-        btn.addEventListener("mouseup", mouseUp, false);
-      } else {;}
-    }
-
-    function mouseDown(e) {
-      e.target.setCapture();
-      e.target.addEventListener("mousemove", mouseMoved, false);
+    function mouseOverScreen() {
+      var scrn = document.getElementById("noVNC_container");
       var desktopaudioelement = document.getElementById("desktopaudio");
+      scrn.requestPointerLock();
       desktopaudioelement.play();
     }
-
-    function mouseUp(e) {
-      e.target.removeEventListener("mousemove", mouseMoved, false);
-    }
     </script>
- </body>
+  </body>
 </html>
