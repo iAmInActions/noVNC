@@ -202,7 +202,7 @@
     
     <script type="text/javascript">
     function mouseOverScreen() {
-      var scrn = document.getElementById("screen");
+      var scrn = document.getElementsByTagName('canvas');
       var desktopaudioelement = document.getElementById("desktopaudio");
       scrn.requestPointerLock();
       desktopaudioelement.play();
