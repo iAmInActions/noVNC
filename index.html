@@ -193,7 +193,7 @@
         <div id="status">Loading</div>
         <div id="sendCtrlAltDelButton">Send CtrlAltDel</div>
     </div>
-    <div id="screen" onmouseover="mouseOverScreen()">
+    <div id="screen" onclick="mouseOverScreen()">
         <!-- This is where the remote screen will appear -->
     </div>
     <audio autoplay id="desktopaudio" style="display: none;">
@@ -204,8 +204,9 @@
     function mouseOverScreen() {
       var scrn = document.getElementById("screen");
       var desktopaudioelement = document.getElementById("desktopaudio");
-      scrn.setCapture();
+      scrn.requestPointerLock();
       desktopaudioelement.play();
+    }
     </script>
 </body>
 </html>
